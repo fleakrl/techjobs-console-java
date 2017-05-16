@@ -114,8 +114,9 @@ public class TechJobs {
 
         for (Map<String, String> job: someJobs){
             for(String key : job.keySet()){
-                System.out.println(key + " : " + job.get(key));
+                System.out.print(key + " : " + job.get(key) + "     ");
             }
+            System.out.println();
         }
     }
 }
