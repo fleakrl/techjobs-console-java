@@ -130,7 +130,13 @@ public class JobData {
     public static List<HashMap<String, String>> findByValue(String keyValue) {
         loadData();
         return allJobs.stream()
-                .filter(element -> element.values().contains(keyValue))
+                .filter(
+                        element ->
+                                !element.values().stream()
+                                        .filter(field ->
+                                                field.contains(keyValue))
+                                        .collect(Collectors.toList()).isEmpty()
+                )
                 .collect(Collectors.toList());
 
     }
