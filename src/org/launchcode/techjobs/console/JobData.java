@@ -10,6 +10,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by LaunchCode
@@ -126,8 +127,11 @@ public class JobData {
     }
 
 
-    private static void findByValue(String keyValue) {
-
+    public static List<HashMap<String, String>> findByValue(String keyValue) {
+        loadData();
+        return allJobs.stream()
+                .filter(element -> element.values().contains(keyValue))
+                .collect(Collectors.toList());
 
     }
 
