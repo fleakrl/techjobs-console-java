@@ -76,6 +76,7 @@ public class JobData {
         for (HashMap<String, String> row : allJobs) {
 
             String aValue = row.get(column);
+            aValue = aValue.toUpperCase();
 
             if (aValue.contains(value)) {
                 jobs.add(row);
@@ -134,7 +135,7 @@ public class JobData {
                         element ->
                                 !element.values().stream()
                                         .filter(field ->
-                                                field.contains(keyValue))
+                                                field.toUpperCase().contains(keyValue))
                                         .collect(Collectors.toList()).isEmpty()
                 )
                 .collect(Collectors.toList());
