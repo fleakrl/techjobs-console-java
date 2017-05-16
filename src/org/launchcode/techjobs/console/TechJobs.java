@@ -33,11 +33,11 @@ public class TechJobs {
 
             String actionChoice = getUserSelection("View jobs by:", actionChoices);
 
-            if (actionChoice.equals("list")) {
+            if ("list".equals(actionChoice)) {
 
                 String columnChoice = getUserSelection("List", columnChoices);
 
-                if (columnChoice.equals("all")) {
+                if ("all".equals(columnChoice)) {
                     printJobs(JobData.findAll());
                 } else {
 
@@ -61,7 +61,7 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
                 searchTerm = searchTerm.toUpperCase();
 
-                if (searchField.equals("all")) {
+                if ("all".equals(searchField)) {
                     //System.out.println(JobData.findByValue(searchTerm));
                     printJobs(JobData.findByValue(searchTerm));
                 } else {
@@ -110,6 +110,7 @@ public class TechJobs {
         return choiceKeys[choiceIdx];
     }
 
+
     // Print a list of jobs
     private static void printJobs(List<HashMap<String, String>> someJobs) {
 
@@ -119,8 +120,8 @@ public class TechJobs {
 
         for (Map<String, String> job: someJobs){
             System.out.println();
-            for(String key : job.keySet()){
-                System.out.println(key + " : " + job.get(key));
+            for(Map.Entry<String, String> entry: job.entrySet()){
+                System.out.println(entry.getKey() + " : " + entry.getValue());
             }
             System.out.println();
         }
